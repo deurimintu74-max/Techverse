@@ -1,0 +1,874 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI + Technology for Beginners — a modern starter website for learning AI tools, tech basics, and practical digital skills." />
+  <title>AI + Technology for Beginners</title>
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --bg-elev: rgba(255, 255, 255, 0.82);
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: rgba(15, 23, 42, 0.08);
+      --shadow: 0 20px 60px rgba(15, 23, 42, 0.10);
+      --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.08);
+      --accent: #6366f1;
+      --accent-2: #22c55e;
+      --accent-3: #06b6d4;
+      --pill: rgba(99, 102, 241, 0.12);
+      --hero-grad: radial-gradient(circle at top left, rgba(99,102,241,.18), transparent 35%), radial-gradient(circle at top right, rgba(34,197,94,.14), transparent 30%), linear-gradient(135deg, #eff6ff 0%, #f8fafc 50%, #ecfeff 100%);
+    }[data-theme="dark"] {
+  --bg: #09111f;
+  --bg-elev: rgba(8, 15, 28, 0.82);
+  --card: #0f172a;
+  --text: #e5eefc;
+  --muted: #9db0ca;
+  --line: rgba(255, 255, 255, 0.08);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.38);
+  --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.28);
+  --pill: rgba(99, 102, 241, 0.18);
+  --hero-grad: radial-gradient(circle at top left, rgba(99,102,241,.22), transparent 35%), radial-gradient(circle at top right, rgba(34,197,94,.18), transparent 30%), linear-gradient(135deg, #0b1220 0%, #0a1220 50%, #081b22 100%);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background .25s ease, color .25s ease;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 12px;
+  background: var(--card);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-soft);
+  z-index: 1000;
+}
+.skip-link:focus { left: 16px; }
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 50%, var(--accent-3) 100%);
+  box-shadow: 0 12px 26px rgba(99, 102, 241, 0.35);
+  font-size: 1.1rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.nav-links a:hover { color: var(--text); }
+
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+
+.btn, .btn-outline {
+  border: 0;
+  border-radius: 999px;
+  padding: 11px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+}
+.btn:hover, .btn-outline:hover { transform: translateY(-1px); }
+
+.btn {
+  color: white;
+  background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 100%);
+  box-shadow: 0 16px 34px rgba(99, 102, 241, 0.32);
+}
+.btn-outline {
+  background: var(--bg-elev);
+  color: var(--text);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+}
+
+.hero {
+  background: var(--hero-grad);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 28px;
+  align-items: center;
+  padding: 44px 0 34px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--pill);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-bottom: 16px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.25rem, 5vw, 4.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+
+.lead {
+  font-size: 1.08rem;
+  color: var(--muted);
+  max-width: 58ch;
+  margin: 18px 0 26px;
+}
+
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.stat {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: var(--shadow-soft);
+}
+
+.stat strong {
+  display: block;
+  font-size: 1.6rem;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat span { color: var(--muted); font-size: .92rem; }
+
+.hero-card {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--card) 92%, transparent), var(--bg-elev));
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.preview {
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, rgba(99,102,241,.15), rgba(34,197,94,.12)),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
+  min-height: 430px;
+  padding: 18px;
+  overflow: hidden;
+  position: relative;
+}
+
+.screen {
+  background: color-mix(in srgb, var(--card) 84%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 18px;
+  height: 100%;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+.screen-top {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.25); }
+[data-theme="light"] .dot { background: rgba(15,23,42,.12); }
+
+.mini-card {
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.mini-card h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+.mini-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+.progress {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(99,102,241,.12);
+  overflow: hidden;
+  margin-top: 12px;
+}
+.progress > span {
+  display: block;
+  height: 100%;
+  width: 72%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--accent-3));
+}
+
+section { padding: 72px 0; }
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.6vw, 2.5rem);
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+.section-head p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 62ch;
+}
+
+.grid-3, .grid-4, .grid-2 {
+  display: grid;
+  gap: 18px;
+}
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: var(--shadow-soft);
+  transition: transform .18s ease, border-color .18s ease;
+  overflow: hidden;
+  position: relative;
+}
+.card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent) 30%, var(--line)); }
+
+.icon-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+  margin-bottom: 14px;
+  background: linear-gradient(135deg, rgba(99,102,241,.14), rgba(34,197,94,.12));
+  border: 1px solid var(--line);
+}
+
+.card h3 { margin: 0 0 10px; font-size: 1.1rem; letter-spacing: -0.03em; }
+.card p { margin: 0; color: var(--muted); }
+
+.topic-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+.chip {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--card) 84%, transparent);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.roadmap {
+  counter-reset: step;
+}
+.step {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.step-num {
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  background: linear-gradient(135deg, rgba(99,102,241,.16), rgba(6,182,212,.12));
+  border: 1px solid var(--line);
+}
+
+.tools {
+  display: grid;
+  gap: 14px;
+}
+.tool-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 18px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card) 85%, transparent);
+}
+.tool-row strong { display: block; margin-bottom: 2px; }
+.tool-row span { color: var(--muted); font-size: .92rem; }
+.tool-tag {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--pill);
+  color: var(--accent);
+  font-size: .86rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.faq details {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px 18px;
+  box-shadow: var(--shadow-soft);
+}
+.faq details + details { margin-top: 12px; }
+.faq summary {
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq p { color: var(--muted); margin: 12px 0 0; }
+
+.newsletter {
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(99,102,241,.14), rgba(34,197,94,.10));
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1.3fr .9fr;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+input[type="email"] {
+  flex: 1 1 260px;
+  min-width: 220px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 13px 16px;
+  background: color-mix(in srgb, var(--card) 82%, transparent);
+  color: var(--text);
+  outline: none;
+}
+input[type="email"]::placeholder { color: var(--muted); }
+
+footer {
+  padding: 34px 0 44px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.scroll-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--bg-elev);
+  color: var(--text);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: .2s ease;
+}
+.scroll-top.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+@media (max-width: 960px) {
+  .hero-inner, .newsletter, .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr; }
+  .nav { flex-wrap: wrap; }
+  .nav-links { order: 3; width: 100%; justify-content: flex-start; }
+  .nav-actions { margin-left: auto; }
+  .preview { min-height: 320px; }
+}
+
+@media (max-width: 560px) {
+  section { padding: 56px 0; }
+  .container { width: min(1180px, calc(100% - 22px)); }
+  .hero-inner { padding-top: 24px; }
+  h1 { font-size: 2.35rem; }
+  .hero-actions, .form { width: 100%; }
+  .btn, .btn-outline { width: 100%; }
+  .tool-row { flex-direction: column; align-items: flex-start; }
+}
+
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="AI + Technology for Beginners home">
+        <div class="logo">AI</div>
+        <span>AI + Technology for Beginners</span>
+      </a><nav class="nav-links" aria-label="Primary">
+    <a href="#learn">Learn</a>
+    <a href="#tools">Tools</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+
+  <div class="nav-actions">
+    <button class="btn-outline" id="themeToggle" type="button" aria-label="Toggle theme">🌙</button>
+    <a class="btn" href="#newsletter">Join free</a>
+  </div>
+</div>
+
+  </header>  <main id="top">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <div class="eyebrow">✨ Simple learning for curious beginners</div>
+          <h1>Learn AI and technology without confusion.</h1>
+          <p class="lead">
+            A clean, beginner-friendly website for explaining AI tools, tech basics, digital skills, and smart ways to use modern apps.
+            Built to help students, creators, and first-time learners understand technology fast.
+          </p><div class="hero-actions">
+        <a class="btn" href="#learn">Start learning</a>
+        <a class="btn-outline" href="#roadmap">See roadmap</a>
+      </div>
+
+      <div class="stats" aria-label="Website stats">
+        <div class="stat">
+          <strong>5 min</strong>
+          <span>quick lesson style</span>
+        </div>
+        <div class="stat">
+          <strong>Beginner</strong>
+          <span>easy language only</span>
+        </div>
+        <div class="stat">
+          <strong>Free</strong>
+          <span>simple starter model</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-card" aria-label="Preview panel">
+      <div class="preview">
+        <div class="screen">
+          <div class="screen-top" aria-hidden="true">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+
+          <div class="mini-card">
+            <h3>Today’s Focus</h3>
+            <p>What is AI, how does it work, and where do beginners use it in daily life?</p>
+            <div class="progress"><span></span></div>
+          </div>
+
+          <div class="mini-card">
+            <h3>Popular Topics</h3>
+            <p>Chatbots, image tools, coding basics, productivity apps, and safe digital habits.</p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Learning Goal</h3>
+            <p>Make technology feel easy, useful, and not scary.</p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Skill Path</h3>
+            <p>Understand → Try → Build → Share</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="content">
+  <section id="learn">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>What this site teaches</h2>
+          <p>Use this structure to publish beginner-friendly posts that people can actually understand and remember.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="icon-badge">🤖</div>
+          <h3>AI basics</h3>
+          <p>Explain what AI is, how chatbots work, and where artificial intelligence is used in real life.</p>
+          <div class="topic-list">
+            <span class="chip">ChatGPT</span>
+            <span class="chip">Image AI</span>
+            <span class="chip">Prompting</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon-badge">💻</div>
+          <h3>Tech for beginners</h3>
+          <p>Teach the basics of websites, apps, browsers, files, cloud storage, and simple tools.</p>
+          <div class="topic-list">
+            <span class="chip">Web basics</span>
+            <span class="chip">Apps</span>
+            <span class="chip">Cloud</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon-badge">🛡️</div>
+          <h3>Smart digital habits</h3>
+          <p>Share safe, useful advice on passwords, privacy, online safety, and avoiding scams.</p>
+          <div class="topic-list">
+            <span class="chip">Safety</span>
+            <span class="chip">Privacy</span>
+            <span class="chip">Security</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container grid-2">
+      <article class="card">
+        <div class="section-head" style="margin-bottom:16px;">
+          <div>
+            <h2>Content ideas</h2>
+            <p>These are easy posts to publish consistently.</p>
+          </div>
+        </div>
+
+        <div class="tools">
+          <div class="tool-row">
+            <div>
+              <strong>What is AI in simple words?</strong>
+              <span>Perfect first post for beginners.</span>
+            </div>
+            <div class="tool-tag">Starter</div>
+          </div>
+          <div class="tool-row">
+            <div>
+              <strong>Best free AI tools for students</strong>
+              <span>Helpful, searchable, and shareable.</span>
+            </div>
+            <div class="tool-tag">Popular</div>
+          </div>
+          <div class="tool-row">
+            <div>
+              <strong>How to make a website with HTML</strong>
+              <span>Builds trust and teaches a skill.</span>
+            </div>
+            <div class="tool-tag">Evergreen</div>
+          </div>
+          <div class="tool-row">
+            <div>
+              <strong>Phone vs laptop for beginners</strong>
+              <span>Easy comparison article.</span>
+            </div>
+            <div class="tool-tag">Useful</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="section-head" style="margin-bottom:16px;">
+          <div>
+            <h2>Why this niche works</h2>
+            <p>It mixes high interest with useful topics people search for all the time.</p>
+          </div>
+        </div>
+
+        <div class="grid-2 roadmap">
+          <div class="card" style="padding:18px;">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div>
+                <h3>Easy to understand</h3>
+                <p>Beginners stay longer when the language is simple.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="padding:18px;">
+            <div class="step">
+              <div class="step-num">2</div>
+              <div>
+                <h3>Searchable topics</h3>
+                <p>People constantly search for AI tools and tech help.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="padding:18px;">
+            <div class="step">
+              <div class="step-num">3</div>
+              <div>
+                <h3>Long-term value</h3>
+                <p>Useful tech content stays relevant for a long time.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="padding:18px;">
+            <div class="step">
+              <div class="step-num">4</div>
+              <div>
+                <h3>Many money paths</h3>
+                <p>Ads, affiliate links, services, and digital products later.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="tools">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Beginner tool stack</h2>
+          <p>These are the kinds of tools you can review, compare, or explain on the site.</p>
+        </div>
+      </div>
+
+      <div class="grid-4">
+        <article class="card">
+          <div class="icon-badge">🔎</div>
+          <h3>Search & research</h3>
+          <p>Teach how to find reliable information, compare options, and avoid fake claims.</p>
+        </article>
+        <article class="card">
+          <div class="icon-badge">✍️</div>
+          <h3>Writing tools</h3>
+          <p>Show how students can draft notes, summaries, captions, and basic posts.</p>
+        </article>
+        <article class="card">
+          <div class="icon-badge">🎨</div>
+          <h3>Design tools</h3>
+          <p>Cover simple thumbnail makers, image editors, and visual apps for content creation.</p>
+        </article>
+        <article class="card">
+          <div class="icon-badge">⚙️</div>
+          <h3>Build tools</h3>
+          <p>Introduce HTML, CSS, JavaScript, and beginner website builders.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Your simple growth roadmap</h2>
+          <p>A clear plan helps a website feel organized instead of random.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="icon-badge">1</div>
+          <h3>Start with basics</h3>
+          <p>Publish simple explanations like “What is AI?” and “How websites work”.</p>
+        </article>
+        <article class="card">
+          <div class="icon-badge">2</div>
+          <h3>Add tutorials</h3>
+          <p>Make step-by-step guides for tools, apps, and beginner projects.</p>
+        </article>
+        <article class="card">
+          <div class="icon-badge">3</div>
+          <h3>Build authority</h3>
+          <p>Keep posting regularly so people start trusting your site as a useful resource.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Common questions</h2>
+          <p>These answers help new visitors understand the site quickly.</p>
+        </div>
+      </div>
+
+      <details>
+        <summary>Is this website only for tech experts?</summary>
+        <p>No. It is made for beginners, students, and anyone who wants simple explanations.</p>
+      </details>
+      <details>
+        <summary>Can I turn this into a blog later?</summary>
+        <p>Yes. You can add more pages for articles, reviews, tutorials, and tool comparisons.</p>
+      </details>
+      <details>
+        <summary>Can I make money from this kind of site?</summary>
+        <p>Over time, yes. A useful niche can later support ads, affiliate links, services, and products.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="newsletter">
+    <div class="container">
+      <div class="newsletter">
+        <div>
+          <div class="eyebrow" style="margin-bottom:12px;">🚀 Stay updated</div>
+          <h2 style="margin:0 0 10px; letter-spacing:-0.04em;">Build a small audience around simple tech learning.</h2>
+          <p style="margin:0; color:var(--muted);">Use this section for email signup, channel links, or a “follow for updates” message.</p>
+        </div>
+        <form class="form" onsubmit="event.preventDefault(); alert('Thanks! This demo form is ready for your email service later.');">
+          <input type="email" placeholder="Enter your email" aria-label="Email address" required />
+          <button class="btn" type="submit">Join free</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <strong style="color:var(--text);">AI + Technology for Beginners</strong>
+      <div>Simple learning. Smart growth. Clean design.</div>
+    </div>
+    <div>© <span id="year"></span> All rights reserved.</div>
+  </div>
+</footer>
+
+  </main><button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const scrollTopBtn = document.getElementById('scrollTop');
+    const year = document.getElementById('year');
+
+    year.textContent = new Date().getFullYear();
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      root.setAttribute('data-theme', savedTheme);
+      themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+    } else {
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const defaultTheme = prefersDark ? 'dark' : 'light';
+      root.setAttribute('data-theme', defaultTheme);
+      themeToggle.textContent = defaultTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme') || 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
+    });
+
+    const toggleScrollButton = () => {
+      if (window.scrollY > 600) scrollTopBtn.classList.add('show');
+      else scrollTopBtn.classList.remove('show');
+    };
+    window.addEventListener('scroll', toggleScrollButton);
+    toggleScrollButton();
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script></body>
+  </html>
