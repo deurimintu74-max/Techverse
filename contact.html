@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact TechVerse</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f7fb;
+color:#222;
+line-height:1.6;
+}
+
+header{
+background:linear-gradient(135deg,#4f46e5,#06b6d4);
+color:white;
+padding:25px 8%;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+}
+
+.hero{
+background:white;
+text-align:center;
+padding:70px 20px;
+}
+
+.hero h1{
+font-size:50px;
+margin-bottom:10px;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:50px 20px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 3px 10px rgba(0,0,0,.1);
+margin-bottom:25px;
+}
+
+.card h2{
+color:#4f46e5;
+margin-bottom:15px;
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+input,textarea{
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+}
+
+textarea{
+min-height:150px;
+resize:vertical;
+}
+
+button{
+background:#4f46e5;
+color:white;
+padding:12px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+opacity:0.9;
+}
+
+.socials{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.social-card{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+footer{
+background:#111827;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<div class="logo">TechVerse</div>
+
+<div>
+<a href="index.html">Home</a>
+<a href="blog.html">Blog</a>
+<a href="tools.html">Tools</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</div>
+</nav>
+</header>
+
+<section class="hero">
+<h1>Contact TechVerse</h1>
+<p>Get in touch with us</p>
+</section>
+
+<div class="container">
+
+<div class="card">
+<h2>Send a Message</h2>
+
+<form onsubmit="event.preventDefault(); alert('Thank you! Your message has been received.');">
+
+<input type="text" placeholder="Your Name" required>
+
+<input type="email" placeholder="Your Email" required>
+
+<textarea placeholder="Your Message" required></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+</div>
+
+<div class="card">
+<h2>Contact Information</h2>
+
+<p><strong>Owner:</strong> Naijel Deuri</p>
+<p><strong>Email:</strong> deurimintu74@gmail.com</p>
+<p><strong>Instagram:</strong> @Naijel_fr</p>
+<p><strong>X (Twitter):</strong> @Naijel_fr</p>
+</div>
+
+<div class="socials">
+
+<div class="social-card">
+<h3>📸 Instagram</h3>
+<p>@Naijel_fr</p>
+</div>
+
+<div class="social-card">
+<h3>𝕏 Twitter</h3>
+<p>@Naijel_fr</p>
+</div>
+
+<div class="social-card">
+<h3>📧 Email</h3>
+<p>deurimintu74@gmail.com</p>
+</div>
+
+<div class="social-card">
+<h3>▶ YouTube</h3>
+<p>Coming Soon</p>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+<h3>TechVerse</h3>
+<p>Founded by Naijel Deuri</p>
+<p>© 2026 TechVerse</p>
+</footer>
+
+</body>
+  </html>
